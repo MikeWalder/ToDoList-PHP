@@ -46,7 +46,26 @@
         }
 
         .opacitor {
-            opacity: 08s;
+            opacity: 0.8;
+        }
+
+        .active {
+            color: black;
+            font-weight: bold;
+            background-color: #eac743;
+            padding-left: 0.5em;
+            margin-left: 0.7em;
+            text-decoration: underline;
+            text-shadow: 1px 2px 3px white;
+        }
+
+        .active+input {
+            color: green;
+        }
+
+        .bg-warning-light {
+            background-color: lightgoldenrodyellow;
+            opacity: 0.8;
         }
     </style>
     <!-- Google font styles -->
@@ -170,64 +189,11 @@
                             <a href="blocnote.php?r=<?= $q['id'] ?>" class="btn btn-danger text-light mb-1 mr-2">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
-                            <a href="blocnote.php?m=<?= $q['id'] ?>" class="btn btn-warning text-light mb-1" data-toggle="modal" data-target="#modalModification">
+                            <a href="blocnote.php?m=<?= $q['id'] ?>" class="btn btn-warning text-light mb-1">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalModification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content opacitor">
-                                        <div class="modal-header bg-secondary">
-                                            <h5 class="modal-title text-center" id="exampleModalLabel">Modifier la tâche</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body bg-secondary">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form-group row">
-                                                            <label for="note" class="col-3 col-form-label font-weight-bold h4">Action : </label>
-                                                            <input type="text" name="note" class="form-control-plaintext shadow bg-light col-8">
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="priorite" class="col-3 col-form-label font-weight-bold h4">Priorité : </label>
-                                                            <div class="col-md-9">
-                                                                <div class="form-check form-check-inline pt-2 pl-1 pr-1">
-                                                                    <input class="btn-check" type="radio" name="priorite" value="1">
-                                                                    <label class="form-check-label h5 pl-1">1</label>
-                                                                </div>
-                                                                <div class=" form-check form-check-inline pl-1 pr-1">
-                                                                    <input class="btn-check" type="radio" name="priorite" value="2">
-                                                                    <label class="form-check-label h5 pl-1">2</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline pl-1 pr-1">
-                                                                    <input class="btn-check" type="radio" name="priorite" value="3">
-                                                                    <label class="form-check-label h5 pl-1">3</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline pl-1 pr-1">
-                                                                    <input class="btn-check" type="radio" name="priorite" value="4">
-                                                                    <label class="form-check-label h5 pl-1">4</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline pl-1">
-                                                                    <input class="btn-check" type="radio" name="priorite" value="5">
-                                                                    <label class="form-check-label h5 pl-1">5</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer bg-secondary opacitor">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="far fa-times-circle"></i>&nbsp;Fermer</button>
-                                            <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i>&nbsp;Modifier</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -267,7 +233,10 @@
     }
 
     if (isset($_GET['m']) && $_GET['m'] > 0) {
-        $id = (int)$_GET['m'];
+        // $id = (int)$_GET['m'];
+        // echo "numéro " . $_GET['m'];
+        require("formModifyAction.php");
+        //header('Location: http://localhost/wf3/bdd/ToDoList-PHP/modifElement.php?m=' . $_GET['m'] . '/');
     }
     ?>
 
@@ -275,7 +244,7 @@
     <!-- Optional JavaScript -->
     <script>
         function redirection() {
-            window.location.href = 'http://localhost/wf3/bdd/blocnote/blocnote.php';
+            window.location.href = 'http://localhost/wf3/bdd/ToDoList-PHP/blocnote.php';
         }
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
