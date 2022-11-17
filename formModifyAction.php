@@ -13,7 +13,7 @@ if (isset($_GET['m'])) {
 ?>
 
 
-    <form action="" method="POST">
+    <form action="" method="POST" class="animate__animated animate__fadeIn">
         <div class="container pt-5">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -67,16 +67,16 @@ if (isset($_GET['m'])) {
             'priorite' => $modify_priorite
         ));
 
-        echo "<div class='container mt-3'>";
-        echo "<div class='row'>";
-        echo "<div class='col-12 text-center'>";
-        echo "<div class='alert alert-success h3 animate__animated animate__fadeOut animate__delay-2s' role='alert'>";
-        echo "<i class='far fa-check-circle pr-3'></i>";
-        echo "La tâche a bien été modifiée !";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
+        echo "<div class='container mt-3 animate__animated animate__fadeIn'>
+                <div class='row'>
+                    <div class='col-12 text-center'>
+                        <div class='alert alert-success h3 animate__animated animate__fadeOut animate__delay-2s' role='alert'>
+                            <i class='far fa-check-circle pr-3'></i>
+                            La tâche a bien été modifiée !
+                        </div>
+                    </div>
+                </div>
+            </div>";
 
         echo "<script>
         setTimeout('redirection()', 3000);

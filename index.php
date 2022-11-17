@@ -6,17 +6,17 @@
         body {
             padding: 0;
             margin: 0;
-            background: url('blocnote.jpg') no-repeat center fixed;
+            background: url('img/blocnote.jpg') no-repeat center fixed;
             -webkit-background-size: cover;
             /* pour anciens Chrome et Safari */
             background-size: cover;
             /* version standardisée */
         }
 
-        h1,
+        .h1,
         h2,
         h3 {
-            text-align: center;
+            text-align: center !important;
             font-weight: bold;
             letter-spacing: 4px;
             font-family: 'Girassol', cursive;
@@ -87,7 +87,9 @@
 </head>
 
 <body>
-    <h1>Bloc-note</h1>
+    <div class="text-center pb-3">
+        <a href="index.php" class="h1 text-dark">Bloc-note</a>
+    </div>
 
     <?php
     require_once("databaseConnection.php");
@@ -106,7 +108,7 @@
                     <div class="form-group row pt-5">
                         <label for="note" class="col-md-3 col-form-label font-weight-bold h4">Action : </label>
                         <div class="col-md-6">
-                            <input type="text" name="note" class="form-control-plaintext shadow">
+                            <input type="text" name="note" class="form-control-plaintext shadow pl-2">
                         </div>
                     </div>
                     <div class="form-group row pt-5">
@@ -186,10 +188,10 @@
                             ?>
                         </div>
                         <div class="col-md-2">
-                            <a href="blocnote.php?r=<?= $q['id'] ?>" class="btn btn-danger text-light mb-1 mr-2">
+                            <a href="index.php?r=<?= $q['id'] ?>" class="btn btn-danger text-light mb-1 mr-2">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
-                            <a href="blocnote.php?m=<?= $q['id'] ?>" class="btn btn-warning text-light mb-1">
+                            <a href="index.php?m=<?= $q['id'] ?>" class="btn btn-warning text-light mb-1">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
 
@@ -216,16 +218,16 @@
             'id' => $id
         ));
 
-        echo "<div class='container mt-3'>";
-        echo "<div class='row'>";
-        echo "<div class='col-12 text-center'>";
-        echo "<div class='alert alert-warning h3 animate__animated animate__fadeOut animate__delay-2s' role='alert'>";
-        echo "<i class='far fa-check-circle pr-3'></i>";
-        echo "La tâche a bien été supprimée !";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
+        echo "<div class='container mt-3'>
+            <div class='row'>
+                <div class='col-12 text-center'>
+                    <div class='alert alert-warning h3 animate__animated animate__fadeOut animate__delay-2s' role='alert'>
+                        <i class='far fa-check-circle pr-3'></i>
+                        La tâche a bien été supprimée !
+                    </div>
+                </div>
+            </div>
+        </div>";
 
         echo "<script>
         setTimeout('redirection()', 3000);
@@ -233,18 +235,14 @@
     }
 
     if (isset($_GET['m']) && $_GET['m'] > 0) {
-        // $id = (int)$_GET['m'];
-        // echo "numéro " . $_GET['m'];
         require("formModifyAction.php");
-        //header('Location: http://localhost/wf3/bdd/ToDoList-PHP/modifElement.php?m=' . $_GET['m'] . '/');
     }
     ?>
-
 
     <!-- Optional JavaScript -->
     <script>
         function redirection() {
-            window.location.href = 'http://localhost/wf3/bdd/ToDoList-PHP/blocnote.php';
+            window.location.href = 'http://localhost/wf3/bdd/ToDoList-PHP/index.php';
         }
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
